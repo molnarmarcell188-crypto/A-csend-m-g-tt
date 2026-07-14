@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Az én utam | Személyes történetem</title>
+
+  <meta
+    name="description"
+    content="Egy személyes történet a mentális nehézségekről, a küzdelmekről, a segítségről és a reményről."
+  >
+
+  <style>
+    :root {
+      --background: #070b16;
+      --background-light: #0d1425;
+      --card: rgba(18, 27, 49, 0.82);
+      --card-light: rgba(26, 39, 69, 0.8);
+      --text: #f8fafc;
+      --muted: #b8c4d8;
+      --blue: #6fd8ff;
+      --purple: #a78bfa;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(62, 162, 255, 0.17), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(167, 139, 250, 0.14), transparent 32%),
+        linear-gradient(180deg, #050812 0%, #0a1020 50%, #060913 100%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body.light-mode {
+      --background: #eef5ff;
+      --background-light: #ffffff;
+      --card: rgba(255, 255, 255, 0.9);
+      --card-light: rgba(242, 247, 255, 0.95);
+      --text: #12213a;
+      --muted: #52627a;
+      --border: rgba(27, 55, 92, 0.12);
+      --shadow: 0 25px 70px rgba(36, 69, 111, 0.14);
+
+      background:
+        radial-gradient(circle at 15% 10%, rgba(62, 162, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(167, 139, 250, 0.12), transparent 32%),
+        linear-gradient(180deg, #edf5ff 0%, #f8fbff 50%, #eaf2fc 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .background-shape {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .shape-one {
+      width: 330px;
+      height: 330px;
+      background: #0ea5e9;
+      top: 10%;
+      left: -130px;
+    }
+
+    .shape-two {
+      width: 390px;
+      height: 390px;
+      background: #8b5cf6;
+      right: -160px;
+      top: 42%;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 7%;
+      background: rgba(5, 8, 18, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light-mode .navbar {
+      background: rgba(243, 248, 255, 0.82);
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .theme-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .theme-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 130px 7% 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1080px;
+      text-align: center;
+    }
+
+    .small-label {
+      display: inline-block;
+      padding: 9px 17px;
+      border: 1px solid rgba(111, 216, 255, 0.35);
+      border-radius: 999px;
+      background: rgba(111, 216, 255, 0.08);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: auto;
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 1.04;
+      letter-spacing: -4px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--blue), #d2c4ff, var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 750px;
+      margin: 28px auto 0;
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--muted);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 750;
+      transition: 0.25s;
+    }
+
+    .button-primary {
+      color: #04111b;
+      background: linear-gradient(90deg, var(--blue), #a6e9ff);
+      box-shadow: 0 14px 35px rgba(71, 192, 238, 0.22);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .scroll-indicator {
+      margin: 60px auto 0;
+      width: 29px;
+      height: 48px;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .scroll-indicator::after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 9px;
+      border-radius: 10px;
+      background: var(--blue);
+      left: 50%;
+      top: 8px;
+      transform: translateX(-50%);
+      animation: scroll 1.7s infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+      }
+    }
+
+    .section {
+      padding: 90px 7%;
+    }
+
+    .section-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-heading {
+      max-width: 750px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      display: block;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+    }
+
+    .intro-text p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        linear-gradient(145deg, rgba(46, 154, 207, 0.2), rgba(139, 92, 246, 0.13)),
+        var(--card);
+    }
+
+    .highlight-card .number {
+      color: var(--blue);
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .highlight-card h3 {
+      font-size: 24px;
+      margin: 18px 0 10px;
+    }
+
+    .highlight-card p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(var(--blue), var(--purple));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 70px;
+      margin-bottom: 26px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 7px;
+      top: 24px;
+      width: 28px;
+      height: 28px;
+      border: 6px solid var(--background-light);
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 2px rgba(111, 216, 255, 0.35);
+    }
+
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.25s;
+    }
+
+    .timeline-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(111, 216, 255, 0.4);
+    }
+
+    .timeline-card .chapter {
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+    }
+
+    .timeline-card h3 {
+      font-size: 26px;
+      margin: 7px 0 12px;
+    }
+
+    .timeline-card p {
+      color: var(--muted);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .experience-card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.25s;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(111, 216, 255, 0.38);
+    }
+
+    .icon {
+      width: 53px;
+      height: 53px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 17px;
+      background: rgba(111, 216, 255, 0.1);
+      border: 1px solid rgba(111, 216, 255, 0.22);
+      font-size: 24px;
+    }
+
+    .experience-card h3 {
+      font-size: 23px;
+      margin: 22px 0 10px;
+    }
+
+    .experience-card p {
+      color: var(--muted);
+    }
+
+    .quote-section {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .quote-box {
+      text-align: center;
+      padding: 70px 40px;
+      background:
+        radial-gradient(circle at top, rgba(69, 184, 235, 0.18), transparent 45%),
+        var(--card);
+    }
+
+    .quote-mark {
+      display: block;
+      font-size: 80px;
+      height: 55px;
+      line-height: 1;
+      color: var(--blue);
+      opacity: 0.65;
+    }
+
+    .quote-box blockquote {
+      max-width: 860px;
+      margin: auto;
+      font-size: clamp(25px, 4.5vw, 42px);
+      font-weight: 750;
+      line-height: 1.3;
+      letter-spacing: -1px;
+    }
+
+    .quote-box p {
+      margin-top: 25px;
+      color: var(--muted);
+    }
+
+    .message-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+    }
+
+    .message-title {
+      background:
+        linear-gradient(145deg, rgba(43, 158, 210, 0.19), rgba(140, 91, 246, 0.16)),
+        var(--card);
+    }
+
+    .message-title h3 {
+      font-size: 37px;
+      line-height: 1.15;
+    }
+
+    .message-title p {
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .message-content p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .message-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .disclaimer {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 201, 99, 0.25);
+      background: rgba(255, 201, 99, 0.07);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-card {
+      padding: 75px 35px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(111, 216, 255, 0.25), transparent 43%),
+        linear-gradient(145deg, rgba(15, 40, 69, 0.9), rgba(44, 28, 74, 0.85));
+    }
+
+    body.light-mode .cta-card {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(111, 216, 255, 0.25), transparent 43%),
+        linear-gradient(145deg, rgba(220, 241, 255, 0.95), rgba(235, 225, 255, 0.95));
+    }
+
+    .cta-card h2 {
+      font-size: clamp(35px, 6vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .cta-card p {
+      max-width: 680px;
+      margin: 20px auto 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 7% 45px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 850px) {
+      .nav-links a {
+        display: none;
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .intro-grid,
+      .message-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .navbar {
+        padding: 13px 5%;
+      }
+
+      .hero,
+      .section {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .glass-card,
+      .timeline-card {
+        padding: 25px;
+        border-radius: 22px;
+      }
+
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item {
+        padding-left: 52px;
+      }
+
+      .timeline-dot {
+        left: 2px;
+      }
+
+      .quote-box {
+        padding: 55px 24px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background-shape shape-one"></div>
+  <div class="background-shape shape-two"></div>
+
+  <nav class="navbar">
+    <a href="#kezdolap" class="logo">
+      Az én <span>utam</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#rolam">Rólam</a>
+      <a href="#tortenetem">Történetem</a>
+      <a href="#nehezsegek">Nehézségek</a>
+      <a href="#uzenetem">Üzenetem</a>
+
+      <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Világos vagy sötét mód váltása"
+      >
+        ☀️
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="kezdolap">
+      <div class="hero-content">
+
+        <span class="small-label">
+          Egy személyes és őszinte történet
+        </span>
+
+        <h1>
+          A történetem nem csak a
+          <span class="gradient-text">fájdalomról</span> szól.
+        </h1>
+
+        <p class="hero-description">
+          Egy út a bizonytalanságtól a segítségkérésen át egészen a reményig.
+          Ez az oldal azért született meg, hogy őszintén megmutassa azt,
+          amit kívülről sokszor senki sem lát.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#tortenetem" class="button button-primary">
+            Történetem elolvasása
+          </a>
+
+          <a href="#uzenetem" class="button button-secondary">
+            Üzenetem másoknak
+          </a>
+        </div>
+
+        <p class="hero-note">
+          A történet személyes tapasztalatokat mutat be és nem helyettesít
+          szakmai vagy orvosi segítséget.
+        </p>
+
+        <div class="scroll-indicator"></div>
+      </div>
+    </section>
+
+    <section class="section" id="rolam">
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">Rólam</span>
+
+          <h2>
+            Egy ember vagyok egy láthatatlan küzdelem mögött.
+          </h2>
+
+          <p>
+            Nem azért hoztam létre ezt az oldalt, hogy sajnálatot kapjak.
+            Azért készítettem, hogy elmondhassam azt, amit sokáig nehéz volt
+            szavakba önteni.
+          </p>
+        </div>
+
+        <div class="intro-grid">
+
+          <article class="glass-card intro-text reveal">
+            <p>
+              Szia! Azért osztom meg a történetemet, mert szeretném
+              megmutatni, hogy egy ember életében lehetnek olyan időszakok,
+              amikor saját magát, az érzéseit vagy akár a körülötte lévő
+              világot is nehéz megértenie.
+            </p>
+
+            <p>
+              Voltak időszakok, amikor a félelem, a bizonytalanság,
+              a hangok, a valóság megkérdőjelezése és a belső változások
+              nagyon megnehezítették a mindennapjaimat.
+            </p>
+
+            <p>
+              Mégis itt vagyok. Tanulom megérteni magamat, elfogadni a
+              segítséget és továbbhaladni akkor is, amikor az út nem könnyű.
+            </p>
+          </article>
+
+          <aside class="glass-card highlight-card reveal">
+            <span class="number">01</span>
+
+            <h3>A történetem célja</h3>
+
+            <p>
+              Őszinteséget, megértést és reményt adni azoknak, akik hasonló
+              nehézségekkel élnek vagy szeretnének jobban megérteni valakit.
+            </p>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tortenetem">
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">Az én történetem</span>
+
+          <h2>
+            Minden nehézségnek volt egy kezdete.
+          </h2>
+
+          <p>
+            A történetedet később ezekben a részekben átírhatod a saját
+            élményeid szerint.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <span class="chapter">Első fejezet</span>
+
+              <h3>Amikor minden elkezdett megváltozni</h3>
+
+              <p>
+                Eleinte talán még én sem értettem pontosan, mi történik
+                velem. Egyre több furcsa érzés, félelem és bizonytalanság
+                jelent meg. Olyan dolgokat is megtapasztaltam, amelyeket
+                nehéz volt elmagyarázni másoknak.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <span class="chapter">Második fejezet</span>
+
+              <h3>A láthatatlan küzdelmek</h3>
+
+              <p>
+                Kívülről sokszor úgy tűnhetett, hogy minden rendben van.
+                Belül azonban a hangok, a félelmek, az erős szorongás,
+                a valóság bizonytalansága és a belső váltások rengeteg
+                energiát vettek el tőlem.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <span class="chapter">Harmadik fejezet</span>
+
+              <h3>Segítséget kérni</h3>
+
+              <p>
+                Megtanultam, hogy segítséget kérni nem szégyen és nem
+                gyengeség. A vizsgálatok, a terápiás beszélgetések,
+                az orvosi segítség és a támogató emberek mind részei
+                lettek annak az útnak, amelyen most is haladok.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <span class="chapter">Negyedik fejezet</span>
+
+              <h3>A jelen és a remény</h3>
+
+              <p>
+                A történetem még nem ért véget. Vannak könnyebb és nehezebb
+                napok. Már tudom, hogy nem kell minden problémát egyszerre
+                megoldanom. Néha az is nagy eredmény, ha csak egyetlen
+                lépést teszek előre.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nehezsegek">
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">Amit sokszor nem látnak</span>
+
+          <h2>
+            A belső küzdelmek kívülről nem mindig észrevehetőek.
+          </h2>
+        </div>
+
+        <div class="experience-grid">
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🌫️</div>
+
+              <h3>Bizonytalanság</h3>
+
+              <p>
+                Vannak pillanatok, amikor nehéz eldönteni, mi valós és mi
+                nem. Ez félelmet és kiszolgáltatottságot okozhat.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🔊</div>
+
+              <h3>Hangok és gondolatok</h3>
+
+              <p>
+                A hangok és az erős belső élmények sokszor elvonják a
+                figyelmet és megnehezítik a hétköznapi dolgokat.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🧩</div>
+
+              <h3>Belső változások</h3>
+
+              <p>
+                Előfordulhat, hogy az érzéseim, a viselkedésem vagy az
+                önmagamról alkotott képem hirtelen megváltozik.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🕰️</div>
+
+              <h3>Nehéz napok</h3>
+
+              <p>
+                Néha egy egyszerű nap végigélése is komoly erőfeszítést
+                igényel. Az apró eredmények ilyenkor különösen fontosak.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🤝</div>
+
+              <h3>Segítség elfogadása</h3>
+
+              <p>
+                A megfelelő szakmai segítség és a támogató kapcsolatok
+                biztonságot és kapaszkodót adhatnak.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card experience-card reveal">
+            <div>
+              <div class="icon">🌱</div>
+
+              <h3>Remény</h3>
+
+              <p>
+                A fejlődés nem mindig látványos. Néha lassú és hullámzó,
+                de minden apró lépés számít.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section quote-section">
+      <div class="section-container">
+
+        <div class="glass-card quote-box reveal">
+          <span class="quote-mark">“</span>
+
+          <blockquote>
+            Nem az határoz meg, hogy milyen nehézségeken mentem keresztül,
+            hanem az is, hogy minden nap újra megpróbálok továbbmenni.
+          </blockquote>
+
+          <p>
+            Az én történetem
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="uzenetem">
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">Üzenetem másoknak</span>
+
+          <h2>
+            Nem kell egyedül végigmenned ezen az úton.
+          </h2>
+        </div>
+
+        <div class="message-grid">
+
+          <article class="glass-card message-title reveal">
+            <h3>
+              Attól, hogy nehéz, még nem reménytelen.
+            </h3>
+
+            <p>
+              A segítségkérés bátorság. A gyógyulás és a fejlődés pedig nem
+              verseny.
+            </p>
+          </article>
+
+          <article class="glass-card message-content reveal">
+            <p>
+              Annak, aki hasonló nehézségekkel küzd, szeretném elmondani:
+              nem vagy kevesebb attól, amit átélsz. Nem kell mindig erősnek
+              mutatnod magad.
+            </p>
+
+            <p>
+              Lehetnek visszaesések, rosszabb napok és bizonytalan
+              időszakok. Ezek nem törlik el azokat a lépéseket, amelyeket
+              már megtettél.
+            </p>
+
+            <p>
+              Beszélj olyan emberrel, akiben megbízol, és fogadd el a
+              megfelelő szakmai segítséget. Az életed és az érzéseid
+              fontosak.
+            </p>
+
+            <div class="disclaimer">
+              Ez a weboldal személyes tapasztalatokat mutat be. Nem ad
+              diagnózist és nem helyettesíti pszichológus, pszichiáter vagy
+              más egészségügyi szakember segítségét.
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="section-container">
+
+        <div class="glass-card cta-card reveal">
+          <span class="eyebrow">A történet folytatódik</span>
+
+          <h2>
+            Minden új nap egy új fejezet.
+          </h2>
+
+          <p>
+            Nem tudom pontosan, mit hoz a jövő, de szeretném tovább írni a
+            történetemet. Lassan, őszintén és reménnyel.
+          </p>
+
+          <a href="#kezdolap" class="button button-primary">
+            Vissza az oldal tetejére
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 Az én utam · Személyes történet a nehézségekről és a reményről
+    </p>
+  </footer>
+
+  <script>
+    const themeButton = document.getElementById("themeButton");
+
+    themeButton.addEventListener("click", function () {
+      document.body.classList.toggle("light-mode");
+
+      if (document.body.classList.contains("light-mode")) {
+        themeButton.textContent = "🌙";
+      } else {
+        themeButton.textContent = "☀️";
+      }
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      revealElements.forEach(function (element) {
+        const elementTop = element.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (elementTop < screenHeight - 80) {
+          element.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+
+</body>
+</html>
